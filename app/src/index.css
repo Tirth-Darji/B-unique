@@ -52,3 +52,30 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Ring Carousel Rotation Animations (Linear 50s Loop) */
+@keyframes spinNormal {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes counterSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.animate-spin-normal {
+  animation: spinNormal 50s linear infinite;
+}
+
+.animate-counter-spin {
+  animation: counterSpin 50s linear infinite;
+}
