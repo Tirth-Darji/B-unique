@@ -1,0 +1,323 @@
+/* GlobeTrotter Registration Theme Variables */
+:root {
+    /* Semantic Ocean Color Tokens */
+    --gt-ocean-dark: #01131a;
+    --gt-ocean-medium: #0a3340;
+    --gt-ocean-light: #5ba3b5;
+
+    /* Fonts */
+    --gt-font-ui: 'Gotham', system-ui, -apple-system, sans-serif;
+    --gt-font-display: 'The Seasons', 'Georgia', serif;
+
+    /* Glassmorphism System */
+    --gt-glass-bg: rgba(255, 255, 255, 0.75);
+    --gt-glass-border: rgba(255, 255, 255, 0.5);
+    --gt-glass-shadow: 0 24px 64px rgba(0, 0, 0, 0.15);
+
+    /* Spacing */
+    --gt-space-1: 8px;
+    --gt-space-2: 16px;
+    --gt-space-3: 24px;
+    --gt-space-4: 32px;
+    --gt-space-5: 48px;
+    --gt-space-6: 64px;
+
+    /* Border Radius */
+    --gt-radius-lg: 32px;
+    --gt-radius-md: 10px;
+    --gt-radius-sm: 8px;
+    --gt-radius-round: 50%;
+}
+
+/* Page Level */
+.gt-registration-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    padding: var(--gt-space-4);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    z-index: 9999;
+    overflow-y: auto;
+}
+
+/* Glass Card */
+.gt-glass-card {
+    width: 100%;
+    max-width: 980px;
+    background: linear-gradient(135deg, rgba(194, 244, 255, 0.15) 0%, rgba(234, 244, 255, 0.05) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--gt-glass-border);
+    border-radius: var(--gt-radius-lg);
+    box-shadow: var(--gt-glass-shadow);
+    display: flex;
+    padding: var(--gt-space-5);
+    color: var(--gt-ocean-dark);
+    font-family: var(--gt-font-ui);
+    box-sizing: border-box;
+    gap: var(--gt-space-6);
+}
+
+/* Left Column */
+.gt-card-left {
+    flex: 0 0 35%;
+    display: flex;
+    flex-direction: column;
+}
+
+.gt-heading {
+    font-family: var(--gt-font-display);
+    font-size: 42px;
+    font-weight: 500;
+    margin: 0 0 var(--gt-space-3) 0;
+    color: var(--gt-ocean-dark);
+    line-height: 1.1;
+    text-align: left;
+}
+
+.gt-subtitle {
+    font-size: 15px;
+    color: var(--gt-ocean-medium);
+    margin: 0 0 var(--gt-space-6) 0;
+    line-height: 1.5;
+    text-align: left;
+}
+
+/* Right Column */
+.gt-card-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Form Styles */
+.gt-registration-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gt-space-3);
+}
+
+.gt-form-row {
+    display: flex;
+    gap: var(--gt-space-3);
+}
+
+.gt-form-field {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gt-space-1);
+}
+
+.gt-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gt-ocean-medium);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+.gt-input,
+.gt-textarea {
+    font-family: var(--gt-font-ui);
+    width: 100%;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid transparent;
+    border-radius: var(--gt-radius-sm);
+    font-size: 14px;
+    color: var(--gt-ocean-dark);
+    transition: all 0.25s ease;
+    box-sizing: border-box;
+}
+
+.gt-input:focus,
+.gt-textarea:focus {
+    outline: none;
+    background: #ffffff;
+    border-color: var(--gt-ocean-medium);
+    box-shadow: 0 0 0 3px rgba(27, 104, 127, 0.15);
+}
+
+.gt-input::placeholder,
+.gt-textarea::placeholder {
+    color: #9ab4bd;
+}
+
+.gt-textarea {
+    resize: vertical;
+    min-height: 70px;
+}
+
+/* Select wrapper */
+.gt-select-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.gt-select {
+    appearance: none;
+    -webkit-appearance: none;
+    padding-right: 40px;
+    cursor: pointer;
+    color: #9ab4bd;
+}
+
+.gt-chevron {
+    position: absolute;
+    right: 16px;
+    pointer-events: none;
+    color: #9ab4bd;
+}
+
+/* Profile Photo Upload */
+.gt-profile-photo-container {
+    display: flex;
+    align-items: center;
+    gap: var(--gt-space-3);
+    margin-top: var(--gt-space-4);
+    margin-bottom: var(--gt-space-4);
+}
+
+.gt-profile-photo-upload {
+    width: 72px;
+    height: 72px;
+    border-radius: var(--gt-radius-round);
+    background: transparent;
+    border: 2px dashed rgba(27, 104, 127, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.25s ease;
+}
+
+.gt-profile-photo-upload:hover,
+.gt-profile-photo-upload:focus-within {
+    background: rgba(255, 255, 255, 0.4);
+    border-color: var(--gt-ocean-medium);
+}
+
+.gt-photo-placeholder {
+    color: var(--gt-ocean-medium);
+    display: flex;
+    transition: transform 0.2s ease;
+}
+
+.gt-profile-photo-upload:hover .gt-photo-placeholder {
+    transform: translateY(-2px);
+}
+
+.gt-photo-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.gt-photo-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.gt-photo-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--gt-ocean-dark);
+    cursor: pointer;
+}
+
+.gt-photo-hint {
+    font-size: 12px;
+    color: var(--gt-ocean-medium);
+}
+
+/* Submit Button */
+.gt-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: var(--gt-space-2);
+}
+
+.gt-submit-btn {
+    background: var(--gt-ocean-dark);
+    color: #ffffff;
+    border: none;
+    border-radius: var(--gt-radius-sm);
+    padding: 14px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: var(--gt-font-ui);
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.gt-submit-btn:hover {
+    background: var(--gt-ocean-medium);
+    transform: translateY(-1px);
+}
+
+.gt-submit-btn:active {
+    transform: translateY(1px);
+}
+
+/* Responsive Behavior */
+@media (max-width: 992px) {
+    .gt-glass-card {
+        flex-direction: column;
+        padding: var(--gt-space-4);
+        gap: var(--gt-space-4);
+        max-width: 600px;
+    }
+
+    .gt-card-left {
+        flex: 0 0 auto;
+    }
+
+    .gt-profile-photo-container {
+        margin-top: 0;
+    }
+
+    .gt-heading {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 768px) {
+    .gt-form-row {
+        flex-direction: column;
+        gap: var(--gt-space-3);
+    }
+
+    .gt-glass-card {
+        padding: var(--gt-space-3);
+    }
+
+    .gt-form-actions {
+        justify-content: stretch;
+    }
+
+    .gt-submit-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

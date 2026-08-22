@@ -1,0 +1,303 @@
+/* GlobeTrotter Login Theme Variables */
+:root {
+    /* Inheriting Semantic Ocean Color Tokens from standard system */
+    --gt-login-ocean-dark: #01131a;
+    --gt-login-ocean-medium: #0a3340;
+    --gt-login-ocean-light: #5ba3b5;
+
+    /* Fonts */
+    --gt-login-font-ui: 'Gotham', system-ui, -apple-system, sans-serif;
+    --gt-login-font-display: 'The Seasons', 'Georgia', serif;
+
+    /* Glassmorphism System */
+    --gt-login-glass-border: rgba(255, 255, 255, 0.5);
+    --gt-login-glass-shadow: 0 24px 64px rgba(0, 0, 0, 0.15);
+
+    /* Spacing */
+    --gt-login-space-1: 8px;
+    --gt-login-space-2: 16px;
+    --gt-login-space-3: 24px;
+    --gt-login-space-4: 32px;
+    --gt-login-space-5: 48px;
+    --gt-login-space-6: 64px;
+
+    /* Border Radius */
+    --gt-login-radius-lg: 32px;
+    --gt-login-radius-sm: 8px;
+}
+
+/* Page Level */
+.gt-login-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    padding: var(--gt-login-space-4);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Align right */
+    box-sizing: border-box;
+    z-index: 9999;
+    overflow-y: auto;
+}
+
+/* Glass Card */
+.gt-login-glass-card {
+    width: 100%;
+    max-width: 500px; /* Slimmer for login */
+    background: linear-gradient(135deg, rgba(194, 244, 255, 0.15) 0%, rgba(234, 244, 255, 0.05) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--gt-login-glass-border);
+    border-radius: var(--gt-login-radius-lg);
+    box-shadow: var(--gt-login-glass-shadow);
+    display: flex;
+    flex-direction: column;
+    padding: var(--gt-login-space-4); /* Reduced from space-5 */
+    color: var(--gt-login-ocean-dark);
+    font-family: var(--gt-login-font-ui);
+    box-sizing: border-box;
+    margin-right: 5%; /* Keep right but not hugging edge */
+}
+
+/* Headings */
+.gt-login-brand {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--gt-login-ocean-medium);
+    margin: 0 0 var(--gt-login-space-1) 0; /* Reduced */
+}
+
+.gt-login-heading {
+    font-family: var(--gt-login-font-display);
+    font-size: 32px; /* Slightly smaller */
+    font-weight: 500;
+    margin: 0 0 4px 0; /* Reduced */
+    color: var(--gt-login-ocean-dark);
+    line-height: 1.2;
+}
+
+.gt-login-subtitle {
+    font-size: 15px;
+    color: var(--gt-login-ocean-medium);
+    margin: 0 0 var(--gt-login-space-3) 0; /* Reduced from space-5 */
+    line-height: 1.5;
+}
+
+/* Form */
+.gt-login-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gt-login-space-2); /* Reduced from space-3 */
+}
+
+.gt-login-form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px; /* Reduced from space-1 */
+}
+
+.gt-login-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gt-login-ocean-medium);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.gt-login-input {
+    font-family: var(--gt-login-font-ui);
+    width: 100%;
+    padding: 12px 16px; /* Reduced padding */
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid transparent;
+    border-radius: var(--gt-login-radius-sm);
+    font-size: 14px;
+    color: var(--gt-login-ocean-dark);
+    transition: all 0.25s ease;
+    box-sizing: border-box;
+}
+
+.gt-login-input:focus {
+    outline: none;
+    background: #ffffff;
+    border-color: var(--gt-login-ocean-medium);
+    box-shadow: 0 0 0 3px rgba(27, 104, 127, 0.15);
+}
+
+.gt-login-input::placeholder {
+    color: #9ab4bd;
+}
+
+.gt-login-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.gt-login-input-icon {
+    position: absolute;
+    right: 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--gt-login-ocean-medium);
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Options */
+.gt-login-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--gt-login-space-1); /* Reduced */
+    margin-top: 4px;
+}
+
+.gt-login-checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.gt-login-checkbox {
+    accent-color: var(--gt-login-ocean-medium);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.gt-login-checkbox-label {
+    font-size: 13px;
+    color: var(--gt-login-ocean-dark);
+}
+
+.gt-login-link {
+    font-size: 13px;
+    color: var(--gt-login-ocean-medium);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.gt-login-link:hover {
+    color: var(--gt-login-ocean-dark);
+    text-decoration: underline;
+}
+
+/* Submit */
+.gt-login-submit-btn {
+    background: #001D39; /* Deep ocean primary */
+    color: #ffffff;
+    border: none;
+    border-radius: var(--gt-login-radius-sm);
+    padding: 12px; /* Reduced padding */
+    font-size: 15px;
+    font-weight: 500;
+    font-family: var(--gt-login-font-ui);
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.gt-login-submit-btn:hover {
+    background: #002d59;
+    transform: translateY(-1px);
+}
+
+.gt-login-submit-btn:active {
+    transform: translateY(1px);
+}
+
+/* Social Login */
+.gt-login-divider {
+    display: flex;
+    align-items: center;
+    margin: var(--gt-login-space-3) 0; /* Reduced from space-4 */
+    color: var(--gt-login-ocean-medium);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.gt-login-divider::before,
+.gt-login-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(10, 51, 64, 0.2);
+}
+
+.gt-login-divider::before { margin-right: 16px; }
+.gt-login-divider::after { margin-left: 16px; }
+
+.gt-login-social-group {
+    display: flex;
+    gap: var(--gt-login-space-2);
+}
+
+.gt-login-social-btn {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(10, 51, 64, 0.1);
+    border-radius: var(--gt-login-radius-sm);
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gt-login-ocean-dark);
+    font-family: var(--gt-login-font-ui);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.gt-login-social-btn:hover {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(10, 51, 64, 0.3);
+}
+
+.gt-login-footer {
+    text-align: center;
+    margin-top: var(--gt-login-space-3); /* Reduced from space-5 */
+    font-size: 14px;
+    color: var(--gt-login-ocean-medium);
+}
+
+.gt-login-footer .gt-login-link {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* Responsive Behavior */
+@media (max-width: 992px) {
+    .gt-login-glass-card {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .gt-login-page {
+        justify-content: center;
+        padding: var(--gt-login-space-3);
+    }
+    
+    .gt-login-glass-card {
+        padding: var(--gt-login-space-4);
+        margin: 0;
+    }
+}
