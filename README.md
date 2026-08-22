@@ -12,35 +12,27 @@ Hackathon project built with React by a three-member team.
 
 ## Working rules
 
-1. Work only inside your assigned folder unless the team agrees on a shared-file change.
-2. Never push directly to `main` during development.
-3. Create a branch named `member-name/feature-name`.
-4. Pull the latest `main` before starting work.
-5. Open a pull request and ask one teammate to review it.
+1. Push the project work to the `main` branch as required by the hackathon.
+2. Work only inside your assigned folder unless the team agrees on a shared-file change.
+3. Always run `git pull origin main` before editing or pushing.
+4. Stage only your own folder, for example `git add tirth/`.
+5. Resolve any conflict together before pushing.
 6. Do not commit `node_modules`, build output, secrets, or local environment files.
 7. Keep reusable UI code small and document any dependencies you add.
 
-## Recommended React workflow
-
-Each folder is an isolated workspace for development. When features are ready, integrate reviewed components into the final React app together. Use the same colors, typography, spacing, component naming, and animation rules across all three workspaces.
-
-### Start a feature branch
+## Main-branch workflow
 
 ```bash
 git switch main
 git pull origin main
-git switch -c your-name/feature-name
-```
-
-### Save and publish work
-
-```bash
-git add .
+# Make changes only inside your assigned folder
+git add your-folder/
 git commit -m "feat: describe your change"
-git push -u origin your-name/feature-name
+git pull --rebase origin main
+git push origin main
 ```
 
-Then open a pull request into `main`.
+Using `git pull --rebase origin main` immediately before pushing reduces conflicts when another teammate has pushed first.
 
 ## Commit message format
 
