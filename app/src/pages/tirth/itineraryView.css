@@ -1,0 +1,765 @@
+/* ==========================================================================
+   GLOBETROTTER ITINERARY VIEW SCOPED STYLES (Reference Image 1)
+   Strictly scoped under .tirth-itinerary-view to prevent leakage.
+   ========================================================================== */
+
+.tirth-itinerary-view {
+  --tirth-navy-950: #030817;
+  --tirth-navy-900: #071021;
+  --tirth-navy-850: #0A1324;
+  --tirth-navy-800: #0C1729;
+  --tirth-navy-700: #132238;
+
+  --tirth-blue-600: #087DB8;
+  --tirth-blue-500: #0B95D0;
+  --tirth-blue-400: #2BB6E8;
+
+  --tirth-teal-500: #2ED4BE;
+  --tirth-teal-400: #45DFCA;
+
+  --tirth-white: #F7F9FC;
+  --tirth-grey-300: #C3CBD8;
+  --tirth-grey-400: #9AA5B9;
+  --tirth-grey-500: #6D788B;
+
+  --tirth-border: rgba(148, 163, 184, 0.15);
+  --tirth-border-strong: rgba(148, 163, 184, 0.28);
+  --tirth-glass: rgba(6, 13, 27, 0.85);
+
+  --tirth-shadow-small: 0 8px 24px rgba(0, 0, 0, 0.22);
+  --tirth-shadow-large: 0 28px 90px rgba(0, 0, 0, 0.42);
+
+  --tirth-display-font: "DM Serif Display", "The Seasons", Georgia, serif;
+  --tirth-interface-font: "Inter", "Gotham", "Montserrat", system-ui, -apple-system, sans-serif;
+
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--tirth-navy-950);
+  color: var(--tirth-white);
+  font-family: var(--tirth-interface-font);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.tirth-itinerary-view *, .tirth-itinerary-view *::before, .tirth-itinerary-view *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.tirth-itinerary-view button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+/* ════════════════════════════════════════
+   1. ITINERARY HEADER NAVIGATION
+   ════════════════════════════════════════ */
+.tirth-itinerary-view .tirth-itin-nav {
+  height: 72px;
+  background: var(--tirth-navy-900);
+  border-bottom: 1px solid var(--tirth-border);
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.tirth-itinerary-view .tirth-itin-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.tirth-itinerary-view .tirth-itin-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--tirth-blue-500), var(--tirth-teal-500));
+  color: var(--tirth-navy-950);
+  display: grid;
+  place-items: center;
+  font-family: var(--tirth-display-font);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.tirth-itinerary-view .tirth-itin-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.tirth-itinerary-view .tirth-itin-nav-link {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--tirth-grey-400);
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.tirth-itinerary-view .tirth-itin-nav-link.active, .tirth-itinerary-view .tirth-itin-nav-link:hover {
+  color: var(--tirth-white);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.tirth-itinerary-view .tirth-itin-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tirth-itinerary-view .tirth-itin-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid var(--tirth-blue-500);
+  cursor: pointer;
+}
+
+/* ════════════════════════════════════════
+   2. MAIN SPLIT SCREEN LAYOUT
+   ════════════════════════════════════════ */
+.tirth-itinerary-view .tirth-itin-split-container {
+  display: grid;
+  grid-template-columns: 48% 52%;
+  height: calc(100vh - 72px);
+  overflow: hidden;
+}
+
+/* ════════════════════════════════════════
+   3. LEFT TIMELINE PANEL (Reference Image 1)
+   ════════════════════════════════════════ */
+.tirth-itinerary-view .tirth-itin-left-panel {
+  background: var(--tirth-navy-900);
+  border-right: 1px solid var(--tirth-border);
+  padding: 32px 36px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.tirth-itinerary-view .tirth-itin-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: var(--tirth-grey-400);
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.tirth-itinerary-view .tirth-itin-back-btn:hover {
+  color: var(--tirth-teal-500);
+}
+
+.tirth-itinerary-view .tirth-itin-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.tirth-itinerary-view .tirth-itin-title {
+  font-family: var(--tirth-display-font);
+  font-size: 1.9rem;
+  color: var(--tirth-white);
+  line-height: 1.2;
+}
+
+.tirth-itinerary-view .tirth-itin-desc {
+  font-size: 0.88rem;
+  color: var(--tirth-grey-400);
+  line-height: 1.55;
+  margin-top: 6px;
+}
+
+.tirth-itinerary-view .tirth-itin-meta-bar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 12px 16px;
+  background: var(--tirth-navy-850);
+  border: 1px solid var(--tirth-border);
+  border-radius: 12px;
+  font-size: 0.8rem;
+  color: var(--tirth-grey-300);
+}
+
+.tirth-itinerary-view .tirth-itin-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tirth-itinerary-view .tirth-itin-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tirth-itinerary-view .tirth-itin-icon-action {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--tirth-border);
+  color: var(--tirth-white);
+  display: grid;
+  place-items: center;
+  transition: all 0.2s ease;
+}
+
+.tirth-itinerary-view .tirth-itin-icon-action:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--tirth-blue-500);
+  color: var(--tirth-blue-400);
+}
+
+/* Day Selector Controls */
+.tirth-itinerary-view .tirth-itin-days-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--tirth-navy-850);
+  padding: 8px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--tirth-border);
+}
+
+.tirth-itinerary-view .tirth-itin-day-tabs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow-x: auto;
+}
+
+.tirth-itinerary-view .tirth-itin-day-tab {
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--tirth-grey-400);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.tirth-itinerary-view .tirth-itin-day-tab.active {
+  background: var(--tirth-blue-500);
+  color: var(--tirth-white);
+  box-shadow: 0 4px 12px rgba(11, 149, 208, 0.35);
+}
+
+/* Timeline Activity Items (Reference Image 1) */
+.tirth-itinerary-view .tirth-itin-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+}
+
+.tirth-itinerary-view .tirth-itin-timeline-item {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 16px;
+  position: relative;
+}
+
+.tirth-itinerary-view .tirth-itin-marker-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.tirth-itinerary-view .tirth-itin-stop-num {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--tirth-navy-800);
+  border: 2px solid var(--tirth-blue-500);
+  color: var(--tirth-white);
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  z-index: 2;
+  transition: all 0.25s ease;
+}
+
+.tirth-itinerary-view .tirth-itin-timeline-item.active .tirth-itin-stop-num {
+  background: var(--tirth-blue-500);
+  color: var(--tirth-white);
+  box-shadow: 0 0 14px var(--tirth-blue-500);
+}
+
+.tirth-itinerary-view .tirth-itin-timeline-line {
+  position: absolute;
+  top: 30px;
+  bottom: -20px;
+  width: 2px;
+  background: rgba(11, 149, 208, 0.25);
+  z-index: 1;
+}
+
+.tirth-itinerary-view .tirth-itin-activity-card {
+  background: var(--tirth-navy-800);
+  border: 1px solid var(--tirth-border);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.tirth-itinerary-view .tirth-itin-activity-card:hover,
+.tirth-itinerary-view .tirth-itin-timeline-item.active .tirth-itin-activity-card {
+  border-color: var(--tirth-blue-500);
+  background: var(--tirth-navy-850);
+  box-shadow: var(--tirth-shadow-small);
+}
+
+.tirth-itinerary-view .tirth-itin-act-img {
+  width: 84px;
+  height: 84px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.tirth-itinerary-view .tirth-itin-act-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tirth-itinerary-view .tirth-itin-act-time {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--tirth-blue-400);
+}
+
+.tirth-itinerary-view .tirth-itin-act-title {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--tirth-white);
+}
+
+.tirth-itinerary-view .tirth-itin-act-loc {
+  font-size: 0.8rem;
+  color: var(--tirth-grey-400);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.tirth-itinerary-view .tirth-itin-act-tag {
+  font-size: 0.72rem;
+  color: var(--tirth-grey-400);
+  margin-top: 4px;
+}
+
+.tirth-itinerary-view .tirth-itin-act-btn {
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--tirth-white);
+  font-size: 0.78rem;
+  font-weight: 600;
+  border: 1px solid var(--tirth-border);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.tirth-itinerary-view .tirth-itin-act-btn:hover {
+  background: var(--tirth-blue-500);
+  border-color: var(--tirth-blue-500);
+}
+
+/* ════════════════════════════════════════
+   4. RIGHT MAP PANEL (Reference Image 1)
+   ════════════════════════════════════════ */
+.tirth-itinerary-view .tirth-itin-right-panel {
+  position: relative;
+  background: #040A17;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.tirth-itinerary-view .tirth-map-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(11, 149, 208, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11, 149, 208, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.tirth-itinerary-view .tirth-map-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.tirth-itinerary-view .tirth-map-route-line {
+  stroke: var(--tirth-blue-500);
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  filter: drop-shadow(0 0 8px rgba(11, 149, 208, 0.6));
+}
+
+.tirth-itinerary-view .tirth-map-marker-group {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.25s ease;
+}
+
+.tirth-itinerary-view .tirth-map-marker-pin {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--tirth-navy-950);
+  border: 3px solid var(--tirth-blue-500);
+  color: var(--tirth-white);
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 0 16px rgba(11, 149, 208, 0.6);
+}
+
+.tirth-itinerary-view .tirth-map-marker-group.active .tirth-map-marker-pin {
+  background: var(--tirth-blue-500);
+  transform: scale(1.25);
+  box-shadow: 0 0 24px var(--tirth-blue-500);
+}
+
+/* Floating Selected Location Preview Card on Map */
+.tirth-itinerary-view .tirth-map-preview-card {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 20;
+  background: rgba(7, 16, 33, 0.92);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--tirth-border-strong);
+  border-radius: 16px;
+  padding: 14px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  box-shadow: var(--tirth-shadow-large);
+  max-width: 320px;
+}
+
+.tirth-itinerary-view .tirth-map-preview-img {
+  width: 54px;
+  height: 54px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* Floating Travel-Time Card Over Map (Reference Image 1) */
+.tirth-itinerary-view .tirth-map-travel-card {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  z-index: 20;
+  background: rgba(7, 16, 33, 0.92);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--tirth-border-strong);
+  border-radius: 16px;
+  padding: 18px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: var(--tirth-shadow-large);
+}
+
+.tirth-itinerary-view .tirth-map-travel-time {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--tirth-white);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tirth-itinerary-view .tirth-map-travel-sub {
+  font-size: 0.78rem;
+  color: var(--tirth-grey-400);
+  line-height: 1.4;
+}
+
+.tirth-itinerary-view .tirth-map-taxi-btn {
+  width: 100%;
+  height: 42px;
+  border-radius: 10px;
+  background: var(--tirth-blue-500);
+  color: var(--tirth-white);
+  font-size: 0.82rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.tirth-itinerary-view .tirth-map-taxi-btn:hover {
+  background: var(--tirth-blue-600);
+}
+
+/* Map Mode Controls */
+.tirth-itinerary-view .tirth-map-controls-group {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 20;
+  display: flex;
+  gap: 6px;
+  background: rgba(7, 16, 33, 0.88);
+  backdrop-filter: blur(12px);
+  padding: 6px;
+  border-radius: 12px;
+  border: 1px solid var(--tirth-border);
+}
+
+.tirth-itinerary-view .tirth-map-mode-btn {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--tirth-grey-400);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.tirth-itinerary-view .tirth-map-mode-btn.active {
+  background: var(--tirth-blue-500);
+  color: var(--tirth-white);
+}
+
+/* ════════════════════════════════════════
+   5. INTERACTIVE MODALS & TOAST STYLES
+   ════════════════════════════════════════ */
+.tirth-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(2, 6, 18, 0.85);
+  backdrop-filter: blur(12px);
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  animation: tirthFadeIn 0.25s ease;
+}
+
+.tirth-modal-box {
+  width: 100%;
+  max-width: 480px;
+  background: var(--tirth-navy-850);
+  border: 1px solid var(--tirth-border-strong);
+  border-radius: 20px;
+  box-shadow: var(--tirth-shadow-large);
+  overflow: hidden;
+}
+
+.tirth-modal-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--tirth-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tirth-modal-close {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--tirth-grey-400);
+  display: grid;
+  place-items: center;
+  transition: all 0.2s ease;
+}
+
+.tirth-modal-close:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: var(--tirth-white);
+}
+
+.tirth-modal-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tirth-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.tirth-form-group label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--tirth-grey-400);
+}
+
+.tirth-modal-input {
+  width: 100%;
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 10px;
+  background: var(--tirth-navy-900);
+  border: 1px solid var(--tirth-border);
+  color: var(--tirth-white);
+  font-size: 0.88rem;
+  outline: none;
+}
+
+.tirth-modal-input:focus {
+  border-color: var(--tirth-blue-500);
+}
+
+.tirth-form-row {
+  display: flex;
+  gap: 12px;
+}
+
+.tirth-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.tirth-modal-btn-cancel {
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--tirth-grey-300);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.tirth-modal-btn-submit {
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: var(--tirth-blue-500);
+  color: var(--tirth-white);
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tirth-modal-thumb {
+  width: 72px;
+  height: 72px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.tirth-modal-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--tirth-teal-500);
+}
+
+.tirth-modal-detail-box {
+  background: var(--tirth-navy-900);
+  border: 1px solid var(--tirth-border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tirth-detail-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  color: var(--tirth-grey-300);
+}
+
+.tirth-success-banner {
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: rgba(46, 212, 190, 0.12);
+  border: 1px solid var(--tirth-teal-500);
+  color: var(--tirth-teal-400);
+  font-size: 0.88rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tirth-toast {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 250;
+  background: var(--tirth-navy-850);
+  border: 1px solid var(--tirth-teal-500);
+  color: var(--tirth-white);
+  padding: 14px 20px;
+  border-radius: 12px;
+  box-shadow: var(--tirth-shadow-large);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  animation: tirthFadeIn 0.3s ease;
+}
+
+@keyframes tirthFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile Responsive Controls */
+@media (max-width: 1024px) {
+  .tirth-itinerary-view .tirth-itin-split-container {
+    grid-template-columns: 1fr;
+    height: auto;
+    overflow: visible;
+  }
+  .tirth-itinerary-view .tirth-itin-right-panel {
+    height: 450px;
+  }
+}

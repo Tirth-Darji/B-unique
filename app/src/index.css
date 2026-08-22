@@ -1,7 +1,7 @@
-/* Base Reset for GlobeTrotter - My Journeys */
+/* Base Reset for GlobeTrotter */
 :root {
   color-scheme: dark;
-  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -10,7 +10,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #030712;
+  background-color: #030A14;
   color: #f8fafc;
   min-height: 100vh;
   overflow-x: hidden;

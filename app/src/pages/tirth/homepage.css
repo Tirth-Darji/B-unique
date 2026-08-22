@@ -1,0 +1,561 @@
+/* ==========================================================================
+   GLOBETROTTER HOMEPAGE SCOPED STYLES (Reference Image 2)
+   Strictly scoped under .tirth-homepage to prevent leakage.
+   ========================================================================== */
+
+.tirth-homepage {
+  --tirth-navy-950: #030817;
+  --tirth-navy-900: #071021;
+  --tirth-navy-850: #0a1324;
+  --tirth-navy-800: #0c1729;
+  --tirth-navy-700: #132238;
+
+  --tirth-blue-600: #087db8;
+  --tirth-blue-500: #0b95d0;
+  --tirth-blue-400: #2bb6e8;
+
+  --tirth-teal-500: #2ed4be;
+  --tirth-teal-400: #45dfca;
+
+  --tirth-cream: #F7F5F0;
+  --tirth-cream-card: #FDFBF7;
+  --tirth-white: #F7F9FC;
+  --tirth-grey-300: #C3CBD8;
+  --tirth-grey-400: #9AA5B9;
+  --tirth-grey-500: #6D788B;
+  --tirth-text-dark: #171A20;
+
+  --tirth-border: rgba(148, 163, 184, 0.15);
+  --tirth-border-strong: rgba(148, 163, 184, 0.27);
+  --tirth-glass: rgba(6, 13, 27, 0.78);
+
+  --tirth-shadow-small: 0 8px 24px rgba(0, 0, 0, 0.22);
+  --tirth-shadow-large: 0 28px 90px rgba(0, 0, 0, 0.42);
+
+  --tirth-display-font: "DM Serif Display", "The Seasons", "Cormorant Garamond", Georgia, serif;
+  --tirth-interface-font: "Inter", "Gotham", "Montserrat", system-ui, -apple-system, sans-serif;
+
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--tirth-navy-950);
+  color: var(--tirth-white);
+  font-family: var(--tirth-interface-font);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.tirth-homepage *, .tirth-homepage *::before, .tirth-homepage *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.tirth-homepage button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+.tirth-homepage a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.tirth-homepage-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-left: clamp(20px, 5vw, 72px);
+  padding-right: clamp(20px, 5vw, 72px);
+}
+
+/* ════════════════════════════════════════
+   1. HOMEPAGE NAVIGATION BAR
+   ════════════════════════════════════════ */
+.tirth-homepage .tirth-home-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  height: 80px;
+  background: transparent;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.tirth-homepage .tirth-home-nav.scrolled {
+  position: fixed;
+  height: 70px;
+  background: rgba(3, 8, 23, 0.90);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--tirth-border);
+  box-shadow: var(--tirth-shadow-small);
+}
+
+.tirth-homepage .tirth-home-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.tirth-homepage .tirth-home-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.tirth-homepage .tirth-home-logo {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--tirth-teal-500), var(--tirth-blue-500));
+  color: var(--tirth-navy-950);
+  display: grid;
+  place-items: center;
+  font-family: var(--tirth-display-font);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.tirth-homepage .tirth-home-brand-name {
+  font-family: var(--tirth-display-font);
+  font-size: 1.35rem;
+  color: var(--tirth-white);
+  letter-spacing: 0.2px;
+}
+
+.tirth-homepage .tirth-home-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.tirth-homepage .tirth-home-nav-link {
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--tirth-grey-300);
+  transition: color 0.25s ease;
+}
+
+.tirth-homepage .tirth-home-nav-link:hover {
+  color: var(--tirth-white);
+}
+
+.tirth-homepage .tirth-home-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tirth-homepage .tirth-home-btn-primary {
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: var(--tirth-white);
+  color: var(--tirth-navy-950);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+}
+
+.tirth-homepage .tirth-home-btn-primary:hover {
+  background: var(--tirth-teal-500);
+  color: var(--tirth-navy-950);
+  transform: translateY(-1.5px);
+}
+
+.tirth-homepage .tirth-home-circle-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  color: var(--tirth-white);
+  display: grid;
+  place-items: center;
+  transition: all 0.25s ease;
+}
+
+.tirth-homepage .tirth-home-circle-btn:hover {
+  background: var(--tirth-teal-500);
+  color: var(--tirth-navy-950);
+}
+
+/* ════════════════════════════════════════
+   2. CINEMATIC MOUNTAIN HERO (Reference Image 2)
+   ════════════════════════════════════════ */
+.tirth-homepage .tirth-home-hero {
+  position: relative;
+  width: 100%;
+  height: 88vh;
+  min-height: 740px;
+  max-height: 980px;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: var(--tirth-navy-950);
+}
+
+.tirth-homepage .tirth-home-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.tirth-homepage .tirth-home-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.65) saturate(1.2) contrast(1.05);
+}
+
+/* Blue Mountain Atmospheric Gradient Overlay */
+.tirth-homepage .tirth-home-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(4, 18, 43, 0.35) 0%,
+    rgba(5, 38, 82, 0.30) 40%,
+    rgba(3, 27, 64, 0.92) 100%
+  );
+}
+
+/* Giant WANDER Overlay Word */
+.tirth-homepage .tirth-home-giant-word-wrap {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 100%;
+  text-align: center;
+  pointer-events: none;
+  user-select: none;
+}
+
+.tirth-homepage .tirth-home-giant-word {
+  font-family: var(--tirth-interface-font);
+  font-size: clamp(5.5rem, 16vw, 15rem);
+  font-weight: 900;
+  letter-spacing: -2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.22);
+  line-height: 0.85;
+  text-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Hero Lower Content & Search Bar */
+.tirth-homepage .tirth-home-hero-content {
+  position: relative;
+  z-index: 10;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 40px;
+}
+
+.tirth-homepage .tirth-home-hero-lower-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 32px;
+}
+
+.tirth-homepage .tirth-home-hero-headline-box {
+  max-width: 540px;
+}
+
+.tirth-homepage .tirth-home-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--tirth-teal-500);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.tirth-homepage .tirth-home-hero-headline {
+  font-family: var(--tirth-display-font);
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  line-height: 1.12;
+  color: var(--tirth-white);
+  margin-bottom: 12px;
+}
+
+.tirth-homepage .tirth-home-hero-subtext {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--tirth-grey-300);
+  font-weight: 300;
+}
+
+.tirth-homepage .tirth-home-hero-badges {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.tirth-homepage .tirth-home-stat-badge {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--tirth-border);
+  border-radius: 12px;
+  padding: 10px 18px;
+  text-align: right;
+}
+
+.tirth-homepage .tirth-home-stat-num {
+  font-family: var(--tirth-display-font);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--tirth-teal-500);
+}
+
+.tirth-homepage .tirth-home-stat-lbl {
+  font-size: 0.72rem;
+  color: var(--tirth-grey-400);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Floating White Trip Search Bar (Reference Image 2) */
+.tirth-homepage .tirth-home-search-panel {
+  background: #FFFFFF;
+  color: var(--tirth-text-dark);
+  border-radius: 20px;
+  padding: 14px 20px;
+  box-shadow: var(--tirth-shadow-large);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  gap: 16px;
+  align-items: center;
+}
+
+.tirth-homepage .tirth-home-search-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 12px;
+  border-right: 1px solid #E2E8F0;
+}
+
+.tirth-homepage .tirth-home-search-field:nth-child(3) {
+  border-right: none;
+}
+
+.tirth-homepage .tirth-home-search-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #64748B;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tirth-homepage .tirth-home-search-input {
+  border: none;
+  background: transparent;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #0F172A;
+  outline: none;
+}
+
+.tirth-homepage .tirth-home-search-btn {
+  height: 52px;
+  padding: 0 28px;
+  border-radius: 14px;
+  background: var(--tirth-navy-950);
+  color: var(--tirth-white);
+  font-size: 0.88rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.tirth-homepage .tirth-home-search-btn:hover {
+  background: var(--tirth-teal-500);
+  color: var(--tirth-navy-950);
+  transform: translateY(-1px);
+}
+
+/* ════════════════════════════════════════
+   3. DESTINATION DISCOVERY SECTION (Reference Image 2 - Cream Light Section)
+   ════════════════════════════════════════ */
+.tirth-homepage .tirth-home-dest-section {
+  background: var(--tirth-cream);
+  color: var(--tirth-text-dark);
+  padding: 100px 0 120px;
+}
+
+.tirth-homepage .tirth-home-dest-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 48px;
+}
+
+.tirth-homepage .tirth-home-dest-title {
+  font-family: var(--tirth-display-font);
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  color: var(--tirth-text-dark);
+  line-height: 1.15;
+  margin-top: 6px;
+}
+
+.tirth-homepage .tirth-home-dest-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.tirth-homepage .tirth-home-dest-card {
+  position: relative;
+  height: 480px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+}
+
+.tirth-homepage .tirth-home-dest-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.22);
+}
+
+.tirth-homepage .tirth-home-dest-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tirth-homepage .tirth-home-dest-card:hover .tirth-home-dest-card-img {
+  transform: scale(1.05);
+}
+
+.tirth-homepage .tirth-home-dest-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(3, 8, 23, 0.90) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+}
+
+.tirth-homepage .tirth-home-dest-card-top {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.tirth-homepage .tirth-home-card-arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  color: var(--tirth-white);
+  display: grid;
+  place-items: center;
+  transition: all 0.25s ease;
+}
+
+.tirth-homepage .tirth-home-dest-card:hover .tirth-home-card-arrow {
+  background: var(--tirth-teal-500);
+  color: var(--tirth-navy-950);
+  transform: rotate(45deg);
+}
+
+.tirth-homepage .tirth-home-dest-card-bottom {
+  color: var(--tirth-white);
+}
+
+.tirth-homepage .tirth-home-dest-card-country {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--tirth-teal-500);
+  margin-bottom: 4px;
+  display: block;
+}
+
+.tirth-homepage .tirth-home-dest-card-name {
+  font-family: var(--tirth-display-font);
+  font-size: 1.8rem;
+  color: var(--tirth-white);
+  margin-bottom: 6px;
+}
+
+.tirth-homepage .tirth-home-dest-card-meta {
+  font-size: 0.82rem;
+  color: var(--tirth-grey-300);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ════════════════════════════════════════
+   4. FINAL HOMEPAGE CTA & FOOTER
+   ════════════════════════════════════════ */
+.tirth-homepage .tirth-home-cta-section {
+  padding: 100px 0;
+  background: var(--tirth-navy-950);
+  text-align: center;
+  border-top: 1px solid var(--tirth-border);
+}
+
+.tirth-homepage .tirth-home-footer {
+  background: #02050E;
+  border-top: 1px solid var(--tirth-border);
+  padding: 48px 0;
+  color: var(--tirth-grey-400);
+  font-size: 0.85rem;
+}
+
+/* Mobile Responsive Adjustments for Homepage */
+@media (max-width: 1024px) {
+  .tirth-homepage .tirth-home-dest-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .tirth-homepage .tirth-home-search-panel {
+    grid-template-columns: 1fr 1fr;
+  }
+  .tirth-homepage .tirth-home-nav-links {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .tirth-homepage .tirth-home-dest-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .tirth-homepage .tirth-home-search-panel {
+    grid-template-columns: 1fr;
+  }
+  .tirth-homepage .tirth-home-hero-lower-grid {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+}

@@ -3,7 +3,7 @@ import './Login.css';
 import LoginForm from './components/LoginForm';
 import bgImage from './assets/login-bg.png';
 
-const Login = () => {
+const Login = ({ onLogin }) => {
   return (
     <div className="gt-login-page" style={{ backgroundImage: `url(${bgImage})` }}>
       <div className="gt-login-glass-card">
@@ -11,7 +11,7 @@ const Login = () => {
         <h1 className="gt-login-heading">Welcome back!</h1>
         <p className="gt-login-subtitle">Login to continue your adventures.</p>
         
-        <LoginForm />
+        <LoginForm onLogin={onLogin} />
         
         <div className="gt-login-footer">
           Don't have an account? <a href="#" className="gt-login-link">Sign up</a>

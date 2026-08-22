@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
 import FormField from './FormField';
 
-const LoginForm = () => {
+const LoginForm = ({ onLogin }) => {
   const [showPassword, setShowPassword] = useState(false);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (onLogin) {
+      onLogin();
+    }
+  };
+
   return (
-    <form className="gt-login-form" onSubmit={(e) => e.preventDefault()}>
+    <form className="gt-login-form" onSubmit={handleSubmit}>
       
       <FormField 
         label="Email" 
