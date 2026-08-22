@@ -1,10 +1,10 @@
 import React from 'react';
-import Login from './pages/lavanya/login/Login';
+import Calendar from './pages/lavanya/calendar/Calendar';
 import './App.css';
 
 function App() {
   return (
-    <Login />
+    <Calendar />
   );
 }
 

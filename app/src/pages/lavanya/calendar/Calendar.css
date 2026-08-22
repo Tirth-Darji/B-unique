@@ -1,0 +1,442 @@
+/* GlobeTrotter Calendar Theme Variables */
+:root {
+    --gt-cal-bg: #f4f9fc;
+    --gt-cal-surface: rgba(255, 255, 255, 0.9);
+    --gt-cal-border: rgba(10, 51, 64, 0.08);
+    --gt-cal-text-main: #01131a;
+    --gt-cal-text-muted: #6b8893;
+    --gt-cal-accent: #0077b6; /* Blue accent */
+    --gt-cal-accent-hover: #005f92;
+    --gt-cal-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+    
+    --gt-cal-font-ui: 'Gotham', system-ui, -apple-system, sans-serif;
+    
+    --gt-cal-radius-lg: 24px;
+    --gt-cal-radius-md: 12px;
+    --gt-cal-radius-sm: 8px;
+}
+
+/* Page Layout */
+.gt-cal-page {
+    min-height: 100vh;
+    background-color: var(--gt-cal-bg);
+    font-family: var(--gt-cal-font-ui);
+    color: var(--gt-cal-text-main);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Top Navbar */
+.gt-cal-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 32px;
+    background: #ffffff;
+    border-bottom: 1px solid var(--gt-cal-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.gt-cal-nav-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.gt-cal-brand {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gt-cal-text-main);
+}
+
+.gt-cal-brand-icon {
+    color: var(--gt-cal-accent);
+}
+
+.gt-cal-nav-center {
+    display: flex;
+    gap: 32px;
+}
+
+.gt-cal-nav-link {
+    text-decoration: none;
+    color: var(--gt-cal-text-muted);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 0;
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+.gt-cal-nav-link:hover {
+    color: var(--gt-cal-text-main);
+}
+
+.gt-cal-nav-link.active {
+    color: var(--gt-cal-accent);
+}
+
+.gt-cal-nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -17px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gt-cal-accent);
+    border-radius: 3px 3px 0 0;
+}
+
+.gt-cal-nav-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.gt-cal-icon-btn {
+    background: none;
+    border: none;
+    color: var(--gt-cal-text-muted);
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s ease;
+}
+
+.gt-cal-icon-btn:hover {
+    color: var(--gt-cal-text-main);
+}
+
+.gt-cal-user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.gt-cal-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--gt-cal-accent);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.gt-cal-user-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gt-cal-text-main);
+}
+
+/* Main Content Area */
+.gt-cal-content {
+    flex: 1;
+    padding: 32px;
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    gap: 32px;
+}
+
+/* Left Column: Calendar Card */
+.gt-cal-main-column {
+    flex: 1;
+    min-width: 0; /* allows flex children to shrink */
+    background: var(--gt-cal-surface);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--gt-cal-border);
+    border-radius: var(--gt-cal-radius-lg);
+    box-shadow: var(--gt-cal-shadow);
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+    box-sizing: border-box;
+}
+
+/* Right Column: Sidebar */
+.gt-cal-sidebar {
+    width: 320px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .gt-cal-content {
+        flex-direction: column;
+    }
+    .gt-cal-sidebar {
+        width: 100%;
+    }
+    .gt-cal-nav-center {
+        display: none; /* Hide standard nav on small screens */
+    }
+}
+/* Calendar Header */
+.gt-cal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.gt-cal-header-left, .gt-cal-header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.gt-cal-month-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.gt-cal-dropdown-icon {
+    color: var(--gt-cal-text-muted);
+}
+
+.gt-cal-view-switcher {
+    display: flex;
+    background: #f1f5f9;
+    border-radius: 8px;
+    padding: 4px;
+}
+
+.gt-cal-view-btn {
+    background: none;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--gt-cal-text-muted);
+    cursor: pointer;
+}
+
+.gt-cal-view-btn.active {
+    background: #ffffff;
+    color: var(--gt-cal-text-main);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.gt-cal-add-btn {
+    background: var(--gt-cal-text-main);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+/* Calendar Grid */
+.gt-cal-grid-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.gt-cal-grid-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin-bottom: 8px;
+}
+
+.gt-cal-weekday {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gt-cal-text-muted);
+    text-transform: uppercase;
+}
+
+.gt-cal-grid-body {
+    flex: 1;
+    position: relative;
+    border-top: 1px solid var(--gt-cal-border);
+    border-left: 1px solid var(--gt-cal-border);
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.gt-cal-cells {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(5, 100px); /* Fixed row height for this implementation */
+}
+
+.gt-cal-cell {
+    border-right: 1px solid var(--gt-cal-border);
+    border-bottom: 1px solid var(--gt-cal-border);
+    padding: 8px;
+}
+
+.gt-cal-date {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 50%;
+}
+
+.gt-cal-cell.today .gt-cal-date {
+    background: var(--gt-cal-accent);
+    color: #ffffff;
+}
+
+.gt-cal-cell-muted .gt-cal-date {
+    color: #cbd5e1;
+}
+
+/* Events */
+.gt-cal-events-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none; /* Let clicks pass through to grid */
+}
+
+.gt-cal-event {
+    position: absolute;
+    height: 24px;
+    border-radius: 4px;
+    padding: 0 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    pointer-events: auto; /* Re-enable clicks for events */
+    cursor: pointer;
+    box-sizing: border-box;
+    margin-top: 40px; /* Offset below the date number */
+    border: 1px solid rgba(255,255,255,0.5);
+}
+
+.gt-cal-event-icon {
+    font-size: 12px;
+}
+
+.gt-cal-event-purple { background: #e0d4fc; color: #5a32a3; }
+.gt-cal-event-mint { background: #d4fce3; color: #20864e; }
+.gt-cal-event-peach { background: #fcebd4; color: #a36219; }
+.gt-cal-event-lightblue { background: #d4eafc; color: #1e5a8c; }
+
+/* Sidebar */
+.gt-cal-sidebar-card {
+    background: var(--gt-cal-surface);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--gt-cal-border);
+    border-radius: var(--gt-cal-radius-lg);
+    box-shadow: var(--gt-cal-shadow);
+    padding: 24px;
+}
+
+.gt-cal-sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.gt-cal-sidebar-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.gt-cal-view-all-btn {
+    background: none;
+    border: none;
+    color: var(--gt-cal-accent);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.gt-cal-trip-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.gt-cal-trip-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px;
+    background: #ffffff;
+    border: 1px solid var(--gt-cal-border);
+    border-radius: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.gt-cal-trip-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.gt-cal-trip-icon-wrapper {
+    width: 40px;
+    height: 40px;
+    background: #f1f5f9;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.gt-cal-trip-details {
+    flex: 1;
+}
+
+.gt-cal-trip-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+}
+
+.gt-cal-trip-dates {
+    font-size: 12px;
+    color: var(--gt-cal-text-muted);
+    margin: 0;
+}
+
+.gt-cal-trip-status {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.gt-cal-status-purple { background: #5a32a3; }
+.gt-cal-status-mint { background: #20864e; }
+.gt-cal-status-peach { background: #a36219; }
+.gt-cal-status-lightblue { background: #1e5a8c; }
