@@ -1,43 +1,32 @@
-# B-unique
+# B-unique - GlobeTrotter
 
-Hackathon project built with React by a three-member team.
+A single shared React/Vite application for the Odoo hackathon challenge.
 
-## Team workspaces
+## Project layout
 
-| Folder | Owner | Purpose |
-|---|---|---|
-| `kartavi/` | Kartavi | Kartavi's assigned React pages and components |
-| `tirth/` | Tirth | Tirth's assigned React pages and components |
-| `lavanya/` | Lavanya | Lavanya's assigned React pages and components |
-
-## Working rules
-
-1. Push the project work to the `main` branch as required by the hackathon.
-2. Work only inside your assigned folder unless the team agrees on a shared-file change.
-3. Always run `git pull origin main` before editing or pushing.
-4. Stage only your own folder, for example `git add tirth/`.
-5. Resolve any conflict together before pushing.
-6. Do not commit `node_modules`, build output, secrets, or local environment files.
-7. Keep reusable UI code small and document any dependencies you add.
-
-## Main-branch workflow
-
-```bash
-git switch main
-git pull origin main
-# Make changes only inside your assigned folder
-git add your-folder/
-git commit -m "feat: describe your change"
-git pull --rebase origin main
-git push origin main
+```text
+app/
+├── src/
+│   ├── pages/
+│   │   ├── kartavi/
+│   │   ├── tirth/
+│   │   └── lavanya/
+│   ├── components/
+│   ├── assets/
+│   ├── App.jsx
+│   └── main.jsx
+└── package.json
 ```
 
-Using `git pull --rebase origin main` immediately before pushing reduces conflicts when another teammate has pushed first.
+There is only one React application. Each teammate builds assigned pages inside their own folder under `app/src/pages/`. Reusable components belong in `app/src/components/` after team agreement.
 
-## Commit message format
+## Start locally
 
-- `feat: add questionnaire screen`
-- `fix: correct mobile navigation`
-- `style: update card spacing`
-- `docs: add component instructions`
-- `chore: update dependencies`
+```bash
+git clone https://github.com/Tirth-Darji/B-unique.git
+cd B-unique/app
+npm install
+npm run dev
+```
+
+Read [CONTRIBUTING.md](CONTRIBUTING.md) before pushing.
