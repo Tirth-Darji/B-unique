@@ -6,11 +6,9 @@ Hackathon project built with React by a three-member team.
 
 | Folder | Owner | Purpose |
 |---|---|---|
-| `member-1-tirth/` | Tirth | Tirth's assigned React pages and components |
-| `member-2/` | Member 2 | Member 2's assigned React pages and components |
-| `member-3/` | Member 3 | Member 3's assigned React pages and components |
-
-> Replace the placeholder member names when the final assignments are confirmed.
+| `kartavi/` | Kartavi | Kartavi's assigned React pages and components |
+| `tirth/` | Tirth | Tirth's assigned React pages and components |
+| `lavanya/` | Lavanya | Lavanya's assigned React pages and components |
 
 ## Working rules
 
@@ -24,7 +22,7 @@ Hackathon project built with React by a three-member team.
 
 ## Recommended React workflow
 
-Each folder is an isolated workspace for development. When features are ready, integrate reviewed components into the final React app together. Avoid creating three unrelated design systems—use the same colors, typography, spacing, component naming, and animation rules.
+Each folder is an isolated workspace for development. When features are ready, integrate reviewed components into the final React app together. Use the same colors, typography, spacing, component naming, and animation rules across all three workspaces.
 
 ### Start a feature branch
 
