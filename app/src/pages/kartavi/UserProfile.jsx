@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { INITIAL_TRIPS } from "./tripData.js";
 import { ProfilePassport } from "./components/profile/ProfilePassport.jsx";
 import { EditProfileModal } from "./components/profile/EditProfileModal.jsx";
 import { EditTripModal } from "./components/profile/EditTripModal.jsx";
 import { DeleteAccountModal } from "./components/profile/DeleteAccountModal.jsx";
+import { api } from "../../services/api";
 
 /**
  * UserProfile Page Component
@@ -13,23 +14,38 @@ import { DeleteAccountModal } from "./components/profile/DeleteAccountModal.jsx"
 export default function UserProfile({ onNavigateToJourneys, sharedTrips, onUpdateTrips }) {
   // Use passed shared trips or initial trip dataset
   const [tripsData, setTripsData] = useState(sharedTrips || INITIAL_TRIPS);
+  const [loading, setLoading] = useState(true);
 
   // User Profile State
-  const [userData, setUserData] = useState({
-    name: "Kartavi Patel",
-    email: "kartavi@example.com",
-    username: "@kartavi",
-    nationality: "Indian",
-    passportNo: "IND-8849201-GT",
-    dob: "14 APR 1998",
-    home: "Vadodara, India",
-    memberSince: "2026",
-    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
-    bio: "Curator of calm expeditions, alpine trails, and ancient teahouses.",
-    tripsCount: 12,
-    countriesVisited: 8,
-    citiesVisited: 14,
-  });
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const dbUser = await api.getCurrentUser();
+        setUserData({
+          name: `${dbUser.first_name} ${dbUser.last_name}`,
+          email: dbUser.email,
+          username: `@${dbUser.first_name.toLowerCase()}`,
+          nationality: dbUser.country || 'Unknown',
+          passportNo: `GT-${dbUser.id}`,
+          dob: "14 APR 1998",
+          home: `${dbUser.city || ''}, ${dbUser.country || ''}`.replace(/^, | , $/g, ''),
+          memberSince: new Date(dbUser.created_at).getFullYear().toString(),
+          avatar: dbUser.profile_photo || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+          bio: dbUser.additional_information || "Curator of calm expeditions, alpine trails, and ancient teahouses.",
+          tripsCount: 12,
+          countriesVisited: 8,
+          citiesVisited: 14,
+        });
+      } catch (error) {
+        console.error("Failed to load user data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchUser();
+  }, []);
 
   // Passport Stamps Dataset
   const [stamps] = useState([
@@ -102,9 +118,29 @@ export default function UserProfile({ onNavigateToJourneys, sharedTrips, onUpdat
   const [isAccountDeleted, setIsAccountDeleted] = useState(false);
 
   // Handlers
-  const handleSaveProfile = (updatedProfile) => {
-    setUserData((prev) => ({ ...prev, ...updatedProfile }));
-    setIsEditProfileOpen(false);
+  const handleSaveProfile = async (updatedProfile) => {
+    try {
+      const nameParts = updatedProfile.name.split(' ');
+      const first_name = nameParts[0] || '';
+      const last_name = nameParts.slice(1).join(' ') || '';
+      const homeParts = updatedProfile.home.split(',');
+      const city = homeParts[0]?.trim() || '';
+      const country = homeParts[1]?.trim() || updatedProfile.nationality || '';
+
+      await api.updateCurrentUser({
+        first_name,
+        last_name,
+        city,
+        country,
+        additional_information: updatedProfile.bio,
+      });
+
+      setUserData((prev) => ({ ...prev, ...updatedProfile }));
+      setIsEditProfileOpen(false);
+    } catch (error) {
+      console.error("Failed to update profile:", error);
+      alert("Failed to update profile. Please try again.");
+    }
   };
 
   const handleSaveTrip = (updatedTrip) => {
@@ -142,6 +178,14 @@ export default function UserProfile({ onNavigateToJourneys, sharedTrips, onUpdat
             Re-activate Passport Profile
           </button>
         </div>
+      </div>
+    );
+  }
+
+  if (loading) {
+    return (
+      <div className="min-h-screen w-full bg-slate-950 flex items-center justify-center">
+        <div className="text-amber-500 text-xl font-serif">Loading Passport...</div>
       </div>
     );
   }

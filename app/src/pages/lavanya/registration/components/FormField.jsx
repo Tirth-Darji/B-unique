@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FormField = ({ label, id, type = 'text', placeholder }) => {
+const FormField = ({ label, id, type = 'text', placeholder, value, onChange }) => {
   return (
     <div className="gt-form-field">
       <label htmlFor={id} className="gt-label">{label}</label>
@@ -10,6 +10,8 @@ const FormField = ({ label, id, type = 'text', placeholder }) => {
         name={id} 
         className="gt-input" 
         placeholder={placeholder} 
+        value={value}
+        onChange={onChange}
         required 
       />
     </div>

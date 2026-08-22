@@ -1,0 +1,301 @@
+/* ==========================================================================
+   GLOBAL NAVBAR STYLES
+   ========================================================================== */
+
+.gt-global-navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  height: 80px;
+  background: transparent;
+  transition: all 0.3s ease;
+  font-family: "Inter", "Gotham", "Montserrat", system-ui, -apple-system, sans-serif;
+}
+
+/* Translucent/Glassmorphism state */
+.gt-global-navbar.scrolled {
+  position: fixed;
+  height: 70px;
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom: none;
+  box-shadow: none;
+}
+
+.gt-navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-left: clamp(20px, 5vw, 72px);
+  padding-right: clamp(20px, 5vw, 72px);
+}
+
+.gt-navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.gt-navbar-logo {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #2ed4be, #0b95d0);
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  font-family: "DM Serif Display", "The Seasons", "Cormorant Garamond", Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(11, 149, 208, 0.2);
+}
+
+/* Base text color adapts based on scrolled state */
+.gt-navbar-brand-name {
+  font-family: "DM Serif Display", "The Seasons", "Cormorant Garamond", Georgia, serif;
+  font-size: 1.35rem;
+  color: #ffffff;
+  letter-spacing: 0.2px;
+  transition: color 0.3s ease;
+}
+
+
+
+.gt-navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.gt-navbar-link {
+  font-size: 0.82rem;
+  font-weight: bold;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.25s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  padding: 8px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.gt-navbar-link:hover {
+  color: #ffffff;
+}
+
+
+
+/* Active State */
+.gt-navbar-link.active {
+  color: #ffffff;
+}
+
+
+
+.gt-navbar-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #2ed4be;
+  border-radius: 2px;
+}
+
+.gt-navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* "Plan a Journey" Primary Button */
+.gt-navbar-btn-primary {
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: #0A4174;
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.gt-navbar-btn-primary:hover {
+  background: #2ed4be;
+  color: #ffffff;
+  transform: translateY(-1.5px);
+  box-shadow: 0 6px 16px rgba(46, 212, 190, 0.3);
+}
+
+.gt-navbar-btn-primary .icon-wrap {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(0, 29, 57, 0.1);
+  display: grid;
+  place-items: center;
+}
+
+
+
+/* Circle Icon Buttons (Search, Profile) */
+.gt-navbar-circle-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  transition: all 0.25s ease;
+  border: none;
+  cursor: pointer;
+}
+
+
+
+.gt-navbar-circle-btn:hover {
+  background: #2ed4be;
+  color: #ffffff;
+}
+
+/* Profile display */
+.gt-navbar-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 6px 12px 6px 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.25s ease;
+  border: none;
+}
+
+
+
+.gt-navbar-profile:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+
+
+.gt-profile-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #C3CBD8;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.gt-profile-name {
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+
+
+/* Mobile Toggle */
+.gt-mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+  .gt-navbar-links {
+    display: none;
+  }
+  .gt-navbar-profile {
+    display: none;
+  }
+  .gt-mobile-toggle {
+    display: block;
+  }
+}
+
+/* Mobile Drawer */
+.gt-mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 300px;
+  height: 100vh;
+  background: #ffffff;
+  z-index: 100;
+  transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 80px 30px 40px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+}
+
+.gt-mobile-menu.open {
+  right: 0;
+}
+
+.gt-mobile-link {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #001D39;
+  text-decoration: none;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(0, 29, 57, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.gt-mobile-link.active {
+  color: #0b95d0;
+}
+
+.gt-mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 29, 57, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 90;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.gt-mobile-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}

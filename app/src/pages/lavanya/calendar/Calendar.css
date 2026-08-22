@@ -1,13 +1,13 @@
 /* GlobeTrotter Calendar Theme Variables */
 :root {
-    --gt-cal-bg: #f4f9fc;
-    --gt-cal-surface: rgba(255, 255, 255, 0.9);
-    --gt-cal-border: rgba(10, 51, 64, 0.08);
-    --gt-cal-text-main: #01131a;
-    --gt-cal-text-muted: #6b8893;
-    --gt-cal-accent: #0077b6; /* Blue accent */
-    --gt-cal-accent-hover: #005f92;
-    --gt-cal-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+    --gt-cal-bg: #001323;
+    --gt-cal-surface: rgba(15, 41, 62, 0.9);
+    --gt-cal-border: rgba(255, 255, 255, 0.1);
+    --gt-cal-text-main: #ffffff;
+    --gt-cal-text-muted: #8eabb8;
+    --gt-cal-accent: #2ed4be;
+    --gt-cal-accent-hover: #1bb5a1;
+    --gt-cal-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
     
     --gt-cal-font-ui: 'Gotham', system-ui, -apple-system, sans-serif;
     
@@ -210,7 +210,7 @@
 
 .gt-cal-view-switcher {
     display: flex;
-    background: #f1f5f9;
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 8px;
     padding: 4px;
 }
@@ -227,9 +227,9 @@
 }
 
 .gt-cal-view-btn.active {
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
     color: var(--gt-cal-text-main);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
 .gt-cal-add-btn {
@@ -272,7 +272,7 @@
     position: relative;
     border-top: 1px solid var(--gt-cal-border);
     border-left: 1px solid var(--gt-cal-border);
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.02);
     border-radius: 12px;
     overflow: hidden;
 }
@@ -391,7 +391,7 @@
     align-items: center;
     gap: 16px;
     padding: 12px;
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--gt-cal-border);
     border-radius: 12px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -400,13 +400,13 @@
 
 .gt-cal-trip-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 .gt-cal-trip-icon-wrapper {
     width: 40px;
     height: 40px;
-    background: #f1f5f9;
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     display: flex;
     align-items: center;

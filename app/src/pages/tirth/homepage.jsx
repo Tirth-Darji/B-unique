@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './homepage.css';
 
-import { TirthNavbar } from './components/TirthNavbar';
 import { TirthHeroWander } from './components/TirthHeroWander';
 import { DestinationDiscoverySection } from './components/DestinationCard';
 import { TirthFooter } from './components/TirthFooter';
@@ -24,12 +23,7 @@ export default function GlobeTrotterHome({ onNavigateToJourneys, onNavigateToPro
 
   return (
     <div className="tirth-homepage">
-      {/* 1. Header Navigation */}
-      <TirthNavbar
-        onNavigateToJourneys={onNavigateToJourneys}
-        onNavigateToProfile={onNavigateToProfile}
-        onNavigateToItineraryView={() => setCurrentScreen('itinerary-view')}
-      />
+
 
       <main id="main-content">
         {/* 2. Mountain Hero with Giant WANDER word & Floating Search Bar (Reference Image 2) */}

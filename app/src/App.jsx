@@ -1,98 +1,151 @@
-import { useState } from 'react'
-import Login from './pages/lavanya/login/Login'
-import GlobeTrotterHome from './pages/tirth/homepage.jsx'
-import TripListing from './pages/kartavi/TripListing'
-import UserProfile from './pages/kartavi/UserProfile'
-import { INITIAL_TRIPS } from './pages/kartavi/tripData'
-import './App.css'
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import Login from './pages/lavanya/login/Login';
+import Registration from './pages/lavanya/registration/Registration';
+import Calendar from './pages/lavanya/calendar/Calendar';
+import GlobeTrotterHome from './pages/tirth/homepage.jsx';
+import ItineraryView from './pages/tirth/itineraryView.jsx';
+import TripListing from './pages/kartavi/TripListing';
+import UserProfile from './pages/kartavi/UserProfile';
+import TravelCommunity from './pages/kartavi/TravelCommunity';
+import TravelDiscovery from './pages/kartavi/TravelDiscovery';
+import { INITIAL_TRIPS } from './pages/kartavi/tripData';
+import { Navbar } from './components/Navbar';
+import './App.css';
+
+// Protected Route Wrapper
+function ProtectedRoute({ children, isLoggedIn }) {
+  if (!isLoggedIn) {
+    return <Navigate to="/login" replace />;
+  }
+  return children;
+}
+
+function AppRoutes({ isLoggedIn, setIsLoggedIn, sharedTrips, setSharedTrips }) {
+  const navigate = useNavigate();
+
+  // Navigation handlers to bridge existing component props with react-router-dom
+  const onNavigateToJourneys = () => navigate('/trips');
+  const onNavigateToProfile = () => navigate('/profile');
+  const onBackToHome = () => navigate('/home');
+
+  return (
+    <>
+      {isLoggedIn && <Navbar />}
+      <Routes>
+        <Route path="/" element={<Navigate to={isLoggedIn ? "/home" : "/login"} replace />} />
+        
+        {/* Public Routes */}
+        <Route path="/login" element={
+          isLoggedIn ? <Navigate to="/home" replace /> : <Login onLogin={() => setIsLoggedIn(true)} />
+        } />
+        
+        <Route path="/registration" element={
+          isLoggedIn ? <Navigate to="/home" replace /> : <Registration onRegister={() => navigate('/login')} />
+        } />
+
+      {/* Protected Routes */}
+      <Route path="/home" element={
+        <ProtectedRoute isLoggedIn={isLoggedIn}>
+          <GlobeTrotterHome 
+            onNavigateToJourneys={onNavigateToJourneys} 
+            onNavigateToProfile={onNavigateToProfile} 
+          />
+        </ProtectedRoute>
+      } />
+
+      <Route path="/profile" element={
+        <ProtectedRoute isLoggedIn={isLoggedIn}>
+          <UserProfile 
+            onNavigateToJourneys={onNavigateToJourneys} 
+            sharedTrips={sharedTrips} 
+            onUpdateTrips={setSharedTrips} 
+          />
+        </ProtectedRoute>
+      } />
+
+      <Route path="/calendar" element={
+        <ProtectedRoute isLoggedIn={isLoggedIn}>
+          <Calendar />
+        </ProtectedRoute>
+      } />
+
+      <Route path="/trips" element={
+        <ProtectedRoute isLoggedIn={isLoggedIn}>
+          <TripListing 
+            onNavigateToProfile={onNavigateToProfile} 
+            sharedTrips={sharedTrips} 
+            onUpdateTrips={setSharedTrips} 
+          />
+        </ProtectedRoute>
+      } />
+
+      <Route path="/itinerary/:id" element={
+        <ProtectedRoute isLoggedIn={isLoggedIn}>
+          <ItineraryView 
+            onBackToHome={onBackToHome}
+            onNavigateToJourneys={onNavigateToJourneys}
+            onNavigateToProfile={onNavigateToProfile}
+          />
+        </ProtectedRoute>
+      } />
+
+      <Route path="/community" element={
+        <ProtectedRoute isLoggedIn={isLoggedIn}>
+          <TravelCommunity 
+            onNavigateToJourneys={onNavigateToJourneys}
+            sharedTrips={sharedTrips}
+            onUpdateTrips={setSharedTrips}
+          />
+        </ProtectedRoute>
+      } />
+
+      <Route path="/discovery" element={
+        <ProtectedRoute isLoggedIn={isLoggedIn}>
+          <TravelDiscovery 
+            onNavigateToJourneys={onNavigateToJourneys}
+            onNavigateToProfile={onNavigateToProfile}
+          />
+        </ProtectedRoute>
+      } />
+      
+      {/* Fallback */}
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
+    </>
+  );
+}
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [currentView, setCurrentView] = useState('home')
-  const [sharedTrips, setSharedTrips] = useState(INITIAL_TRIPS)
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [sharedTrips, setSharedTrips] = useState(INITIAL_TRIPS);
+  const [isLoading, setIsLoading] = useState(true);
 
-  if (!isLoggedIn) {
-    return <Login onLogin={() => setIsLoggedIn(true)} />
+  // Check for JWT token on mount
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      setIsLoggedIn(true);
+    }
+    setIsLoading(false);
+  }, []);
+
+  if (isLoading) {
+    return null; // Or a loading spinner
   }
 
   return (
-    <div className="min-h-screen bg-[#030A14] text-slate-100 font-sans">
-      {currentView !== 'home' && (
-        <nav className="sticky top-0 z-40 bg-[#030A14]/90 backdrop-blur-md border-b border-slate-800 px-4 sm:px-8 py-3 flex items-center justify-between">
-          <div
-            className="flex items-center gap-3 cursor-pointer"
-            onClick={() => setCurrentView('home')}
-          >
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-teal-400 to-emerald-400 text-slate-950 flex items-center justify-center font-black font-serif text-lg shadow-md">
-              G
-            </div>
-
-            <span className="font-bold text-base tracking-tight font-sans text-white">
-              GlobeTrotter
-            </span>
-          </div>
-
-          <div className="flex items-center gap-2 bg-slate-900/90 border border-slate-800 p-1 rounded-full text-xs font-semibold">
-            <button
-              type="button"
-              onClick={() => setCurrentView('home')}
-              className="px-4 py-1.5 rounded-full text-slate-400 hover:text-white transition-all"
-            >
-              Explore Home
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setCurrentView('journeys')}
-              className={`px-4 py-1.5 rounded-full transition-all ${
-                currentView === 'journeys'
-                  ? 'bg-teal-500 text-slate-950 font-bold shadow-md'
-                  : 'text-slate-400 hover:text-white'
-              }`}
-            >
-              My Journeys
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setCurrentView('profile')}
-              className={`px-4 py-1.5 rounded-full transition-all flex items-center gap-1.5 ${
-                currentView === 'profile'
-                  ? 'bg-amber-500 text-slate-950 font-bold shadow-md'
-                  : 'text-slate-400 hover:text-white'
-              }`}
-            >
-              <span>🛂</span>
-              <span>User Profile</span>
-            </button>
-          </div>
-        </nav>
-      )}
-
-      {currentView === 'home' && (
-        <GlobeTrotterHome
-          onNavigateToJourneys={() => setCurrentView('journeys')}
-          onNavigateToProfile={() => setCurrentView('profile')}
-        />
-      )}
-
-      {currentView === 'journeys' && (
-        <TripListing
-          onNavigateToProfile={() => setCurrentView('profile')}
+    <BrowserRouter>
+      <div className="min-h-screen bg-[#030A14] text-slate-100 font-sans">
+        <AppRoutes 
+          isLoggedIn={isLoggedIn} 
+          setIsLoggedIn={setIsLoggedIn}
           sharedTrips={sharedTrips}
-          onUpdateTrips={setSharedTrips}
+          setSharedTrips={setSharedTrips}
         />
-      )}
-
-      {currentView === 'profile' && (
-        <UserProfile
-          onNavigateToJourneys={() => setCurrentView('journeys')}
-          sharedTrips={sharedTrips}
-          onUpdateTrips={setSharedTrips}
-        />
-      )}
-    </div>
-  )
+      </div>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
